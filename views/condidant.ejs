@@ -1,0 +1,98 @@
+<%- include("header",{data:mes,datalen:datalen})-%>
+<head>
+    <style>
+        #btns:hover{
+
+background-color: green;
+}
+    </style>
+</head>
+<link href="css/condidate.css" rel="stylesheet">
+    
+<div class="container my-5">
+<h3> Select condidate </h3>
+<div class="card " style="border-radius: 30px;">
+  <div class="container"> 
+    
+                  
+                    
+                
+    <div class="card-body" >
+        
+            
+                <% for(let count = 0; count <= 2; count++ ){ %>
+                 
+                
+                   <% if(typeof alldata !== 'undefined'){
+                        %>
+                       
+                          <div class="row my-2">
+             
+                            <div class="col-sm ">
+                         <p>
+                         
+                           <img src="<%=alldata[count].image%>" style="border-radius:50% ; height: 120px; width:120px;  " align="center" class="img-fluid" alt="Responsive image">
+
+
+                         </p>
+                            </div>
+                        <div class="col-sm">
+                          <h4 ><b><%=alldata[count].name %></b></h5>
+                          <h5 class="my-3">Origin <%=alldata[count].origin %></h6>
+                          <h6 class="my-3">Age <%=alldata[count].age %></h6>
+          
+                        </div>
+                        <div class="col-sm">
+                         <h4><b>Education </b></h3>
+                         <h6 class="my-3"><%=alldata[count].education %></h4>
+                        </div>
+                        <div class="col-sm">
+                        <div class="my-2">
+                          <form method="post" action="/countvote">
+                         <input type="hidden" name="member_id" value="<%=alldata[count]._id %>">
+                         <input type="submit" id="btns" value="vote" style="width: 20rem; font-size:20px;" value="" >
+                        </form>
+                        </div>
+
+                       <div class="my-4">
+                        <a href="/condidateprofo/?id=<%=alldata[count]._id%>" ><button id="btns" style="width: 20rem; font-size:20px;" value="View" >View More</button></a>
+                      </div></div>
+                      </div>
+               
+                    
+                        <%
+                      }
+                      %>
+                  
+                    <%#  will output the numbers 1-100 %>
+                <% } %>
+                
+               
+    </div>
+    </div>
+  </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+      
+</div>
+</div>
+
+
+
+<%- include("footer")-%>

@@ -1,0 +1,164 @@
+var express = require('express');
+var app = express();
+const Emp = require('./models/coonection')
+const Emp2 = require('./models/shifa')
+const User= require('./models/adminuser')
+const AdminBroExpressjs = require('admin-bro-expressjs')
+const AdminBro = require('admin-bro')
+const AdminBroMongoose = require('@admin-bro/mongoose')
+const AdminBroExpress = require('@admin-bro/express')
+var PORT = process.env.PORT || 5000;
+const mongoose = require('mongoose')
+const url = 'mongodb://localhost:27017/mydb'
+
+
+mongoose.connect(url)
+const con = mongoose.connection
+
+con.on('open', () => {
+    console.log('connected...')
+})
+
+app.set('view engine', 'ejs');
+app.use(express.static("views"));
+
+const routing=require('./routers/controler');
+app.use('/',routing);
+// View engine setup
+
+
+
+
+//Admin Bro
+const canModifyUsers = ({ currentAdmin }) => currentAdmin && currentAdmin.role === 'admin'
+AdminBro.registerAdapter(AdminBroMongoose)
+const AdminBroOptions = {
+  resources: 
+  [Emp,{
+    resource: User,  
+    options: {
+      properties: {
+        encryptedPassword: { isVisible: false },
+        password: {
+          type: 'string',
+          isVisible: {
+            list: false, edit: true, filter: false, show: false,
+          },
+        },
+      },
+      actions: {
+        new: {
+          before: async (request) => {
+            if(request.payload.record.password) {
+              request.payload.record = {
+                ...request.payload.record,
+                encryptedPassword: await           bcrypt.hash(request.payload.record.password, 10),
+                password: undefined,
+              }
+            }
+            return request
+          },
+        },
+        edit: { isAccessible: canModifyUsers },
+        delete: { isAccessible: canModifyUsers },
+        new: { isAccessible: canModifyUsers },
+      }
+    }
+  }],
+}
+const adminBro = new AdminBro(AdminBroOptions)
+const router = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
+  authenticate: async (email, password) => {
+    const user = await User.findOne({ email })
+      if (user) {
+        if (password === user.encryptedPassword) {
+          return user
+        }
+      }
+    return false
+  },
+  cookiePassword: 'session Key',
+})
+
+
+
+app.listen(PORT, function (err) {
+    if (err) console.log(err);
+    console.log("Server listening on PORT", PORT);
+});
+
+
+
+
+
+
+//
+
+
+
+
+const mongoose = require('mongoose')
+const express = require('express')
+const AdminBro = require('admin-bro')
+const AdminBroExpressjs = require('admin-bro-expressjs')
+const bcrypt = require('bcrypt')
+
+// We have to tell AdminBro that we will manage mongoose resources with it
+AdminBro.registerAdapter(require('admin-bro-mongoose'))
+
+// express server definition
+const app = express()
+
+// Resources definitions
+const User = mongoose.model('User', {
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  role: { type: String, enum: ['admin', 'restricted'], required: true },
+})
+const adminBro = new AdminBro({
+    resources: [{
+      resource: User,
+      options: {
+        properties: {
+          encryptedPassword: {
+            isVisible: false,
+          },
+          password: {
+            type: 'string',
+            isVisible: {
+              list: false, edit: true, filter: false, show: false,
+            },
+          },
+        },
+        actions: {
+          new: {
+            before: async (request) => {
+              if(request.payload.record.password) {
+                request.payload.record = {
+                  ...request.payload.record,
+                  encryptedPassword: await bcrypt.hash(request.payload.record.password, 10),
+                  password: undefined,
+                }
+              }
+              return request
+            },
+          }
+        }
+      }
+    }],
+    rootPath: '/admin',
+  })
+// Pass all configuration settings to AdminBro
+
+
+// Build and use a router which will handle all AdminBro routes
+const router = AdminBroExpressjs.buildRouter(adminBro)
+app.use(adminBro.options.rootPath, router)
+
+// Running the server
+const run = async () => {
+  await mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true })
+  await app.listen(8080, () => console.log(`Example app listening on port 8080!`))
+}
+
+run()

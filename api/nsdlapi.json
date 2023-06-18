@@ -1,0 +1,112 @@
+[
+    {
+        "id":1,
+        "name":"shifa",
+        "email":"shifabhari@gmail.com",
+        "share":10,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"shif4",
+        "image":"./reguserimg/ima.png"
+        
+    
+
+    },
+    {
+        "id":2,
+        "name":"zarnajjjgf",
+        "email":"bhadkanzarna@gmail.com",
+        "share":100,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"zarna1",
+        "image":"./reguserimg/women.jpg"
+        
+    
+    
+
+    },
+    {
+        "id":3,
+        "name":"prita",
+        "email":"shifabhari69@gmail.com",
+        "share":800,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"abc",
+        "image":"./reguserimg/priti.jpg"
+    
+    
+
+    },
+    {
+        "id":4,
+        "name":"zdivya",
+        "email":"bhadkanzarna4@gmail.com",
+        "share":100,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"123",
+        "image":"./reguserimg/harry.jpg"
+    
+    
+
+    }
+    ,
+    {
+        "id":5,
+        "name":"virat",
+        "email":"shifabhari90@gmail.com",
+        "share":34000,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"890",
+        "image":"./reguserimg/virat.jpg"
+    
+    
+
+    }
+
+    ,
+    {
+        "id":6,
+        "name":"min",
+        "email":"bhadkanzarna238@gmail.com",
+        "share":9000,
+        "gender":"female",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"aop",
+        "image":"./reguserimg/emma.jpg"
+    
+    
+
+    }
+    ,
+    {
+        "id":7,
+        "name":"rehu",
+        "email":"bhadkanzarna238000@gmail.com",
+        "share":8000,
+        "gender":"male",
+        "age":21,
+        "origin":"amreli",
+        "education":"mba",
+        "member_id":"aop",
+        "image":"./reguserimg/cris.jpg"
+    
+    
+
+    }
+]

@@ -1,0 +1,73 @@
+#entinput {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  border-bottom-width: 7px;
+  border-bottom-color: #2579c7;
+
+
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: rgb(134, 123, 123);
+  font-size: 20px;
+  font-family: sans-serif;
+
+
+}
+
+input {
+  width: 100%;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.waviy {
+  position: relative;
+
+}
+
+#img{
+  height: 4rem;
+  width: 3rem;
+}
+
+.waviy span {
+  font-family: serif;
+  position: relative;
+  display: inline-block;
+  color: rgb(160, 31, 31);
+  /* text-transform: uppercase; */
+  animation: waviy 1s infinite;
+  animation-delay: calc(.1s * var(--i));
+  font-size: 30px;
+
+}
+
+@keyframes waviy {
+
+  0%,
+  40%,
+  100% {
+    transform: translateY(0)
+  }
+
+  20% {
+    transform: translateY(-20px)
+  }
+}
+
+input:hover {}

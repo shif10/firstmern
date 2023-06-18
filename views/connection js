@@ -1,0 +1,11 @@
+const mongoose = require('mongoose')
+const url = 'mongodb://localhost:27017/mydb'
+
+
+
+mongoose.connect(url, {useNewUrlParser:true})
+const con = mongoose.connection
+
+con.on('open', () => {
+    console.log('connected...')
+})

@@ -1,0 +1,99 @@
+<%- include('header',{data:mes,datalen:datalen})-%>
+    <style>
+        #btns:hover {
+
+            background-color: green;
+        }
+
+        #btns {
+            width: 20rem;
+            height: 2.50rem;
+            font-size: 20px;
+            border: 0;
+            border-radius: 2rem;
+            background-color: #145DA0;
+            color: white
+        }
+    </style>
+
+
+    <div class="container my-5" align="center" style="margin-top:10rem;">
+
+
+
+        <hr>
+        <div class="my-2" style="padding-left:40px; font-size:20px; ">
+            <div class="geeks my-2">
+                <img src="../<%=alldata.image%>"
+                    style="height: 13rem; width: 15rem; margin-right: 4rem; border-radius: 50%;" align="center">
+
+            </div>
+            <table style=" border-collapse: collapse;border-spacing: 0;width: 60%; border:1px; margin-left:16.75rem; "
+                align="center">
+
+                <tr>
+                    <td><b>Condidate name</b></td>
+                    <td>
+                        <%=alldata.name%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Condidate age</b></td>
+                    <td>
+                        <%=alldata.age%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Education</b></td>
+                    <td>
+                        <%=alldata.education%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Origin</b></td>
+                    <td>
+                        <%=alldata.origin%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Gender</b></td>
+                    <td>
+                        <%=alldata.gender%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Email</b></td>
+                    <td>
+                        <%=alldata.email%>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>More details</b></td>
+                    <td>
+                        <%=alldata.description%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="my-2">
+<form method="post" action="/countvote">
+    <input type="hidden" name="member_id" value="<%=alldata._id %>">
+    <input type="submit" id="btns" value="vote" class="my-4">
+
+</form>
+                            
+
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+    <%- include('footer')-%>

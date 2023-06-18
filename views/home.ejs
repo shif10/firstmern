@@ -1,0 +1,97 @@
+  <%- include('header',{data:mes,datalen:datalen})-%>
+
+  <link href="../css/home.css"  rel="stylesheet" >
+
+      
+      
+  <div class="container my-5">
+    <div class="container my-5">
+      <div class="row">
+       
+        <div class="col-sm">
+          <img style="width:40rem; height: rem;" src="images/reviews/vote1.jpg">
+        </div>
+        <div class="col-sm">
+          <h3 style="margin-left:5rem; color:#ff1361;" class="my-4"> <% if(typeof name !== 'undefined'){
+            %>
+            <h4 style="color: red;">Welcome,<%= name %></h3>
+            <%
+          }
+          %></h3>
+          <h4 class="animate-charcter my-3">Let's vote and choose board of director for our company  give your small contribution ...</h3>
+          <form class="form-inline my-2 my-lg-0" action="/voteid">
+         
+          
+            <button  class="btn mx-2 my-5" id=""  style="width:18rem; height:3rem; border-radius: 18px;background-color:#145DA0; color:#ffffff; font-size: 20px;">vote here</button></span></button>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5" style="font-size: 20px;">
+
+    <h2 class="text-center my-5" style="color: #1457d3; font-size: 40px;"><b> Board meeting voting protocol</b></h2>
+
+
+    <p  class="text-justify" >
+      The voting procedures of board directors determine how they make decisions. A board of directors makes vital decisions that will affect the organization’s future. Therefore, board voting procedures must be accurate, efficient, transparent, and secure so that these decisions can be trusted.
+
+<p class="text-justify text-center">
+
+The voting process for decisions begins when a board member makes a motion. A motion is simply a statement of a proposed action. Making and approving a motion involves various steps, and the board must act on a motion once a board director offers it.
+</p>
+<p class="text-justify text-center"></p>
+Boards have used a variety of methods historically to count votes. Voting online is faster, cheaper, and more easily tracked than older, more traditional mail-in ballots or in-person ballots. This is why online voting has become the preferred voting method for boards. 
+  </p>  </h5>
+  </div>
+  <div class="container my-3">
+    <h1 style="color: #1457d3; font-family:serif;">Take your date</h2>
+  </div>
+  <div class="container my-5">
+  <table class="table table-bordered" id="time">
+    <thead>
+      <tr>
+        <th scope="col">Rounds</th>
+        <th scope="col">date</th>
+        <th scope="col">time</th>
+        <th scope="col">last date</th>
+        <th scope="col">result date</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <% if(typeof timetable !== 'undefined'){
+          %>
+        <th scope="row"><%=timetable.Rounds%></th>
+     
+        <td><%=timetable.date%></td>
+        <td><%=timetable.Time%></td>
+        <td><%=timetable.Lastdate%></td>
+        <td></td>
+      
+      </tr>
+      
+      <tr>
+       
+        
+      </tr>
+      <%
+          }%>
+         
+    </tbody>
+  </table>
+</div>
+
+ 
+
+	</section> -->
+
+
+
+</body>
+<%- include('footer')-%>
+
+    

@@ -1,0 +1,66 @@
+<%- include('header',{data:mes,datalen:datalen}) -%>
+
+ 
+
+    <link href="css/voteid.css" rel="stylesheet">
+    
+
+    <script src="js/votid.js"></script>
+ 
+  <div class="container my-5">
+    <% if(typeof message !== 'undefined'){
+      %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%=message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      
+      <%
+    }
+    
+    %>
+
+    
+    
+      <div class="waviy">
+        <span style="--i:1">Please</span>
+        <span style="--i:2"> </span>
+        <span style="--i:2">enter </span>
+        <span style="--i:2"> </span>
+        <span style="--i:3">your</span>
+        <span style="--i:2"> </span>
+        <span style="--i:4"> holding id</span>
+        <span style="--i:2"> </span>
+        <span style="--i:5">here</span>
+        <span style="--i:2"> </span>
+        <span style="--i:6">to </span>
+        <span style="--i:2"> </span>
+        <span style="--i:7">varifie!!!</span>
+
+
+      </div>
+     <form  action="/voteid" method="post">
+      
+      
+
+
+      <input type="text" class=" no-outline mt-5  my-5 " placeholder="Enter your five digit id and press enter"
+        style="width: 60rem; height:2rem; margin-top: 30rem;" name="voteid" id="entinput" onclick="myFunction()">
+      <!-- <a href="/otp" id="entclick" onclick="return confirm('Check you phone to get otp.');"  ><img src="images/reviews/ent.png"></a><br> -->
+      <input type="image" img src="images/reviews/ent.png" id="img" onclick="return confirm('Check you phone to get otp.');"> 
+    </form>
+
+      
+   
+
+
+
+  </div>
+
+
+  
+
+  <%- include('footer') -%>
